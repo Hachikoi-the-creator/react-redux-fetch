@@ -29,15 +29,9 @@ export function receivePost(post) {
 
 export function fetchPost(valor) {
   return function (dispatch) {
-    const placeHolder = {
-      name: "Johnny",
-      age: 99,
-    };
-
     dispatch(getPost());
-    fetch(`https://jsonplaceholder.typicode.com/todos/${valor}`)
-      .then((res) => res.data)
-      .then((data) => dispatch(receivePost(data || placeHolder)))
-      .catch((e) => console.log(e));
+    fetch("https://jsonplaceholder.typicode.com/todos/1")
+      .then((response) => response.json())
+      .then((json) => dispatch(receivePost(json)));
   };
 }
